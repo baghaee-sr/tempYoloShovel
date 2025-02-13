@@ -1,0 +1,5 @@
+{
+    "CONF_THRESHOLD": 0.7,
+    "IOU_THRESHOLD": 0.45,
+    "TEETH_THRESHOLD": 7
+}
