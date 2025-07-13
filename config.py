@@ -1,6 +1,6 @@
 config = {
     # --- تنظیمات ورودی و مدل ---
-    "input_source": 2,
+    "input_source": "files/output_2025-01-31_11-48-58.mp4",       # مسیر فایل ویدیو یا 0 برای وب‌کم
     "model_path": "assets/weights/img1024_notSorting.pt",        # مسیر فایل مدل YOLO
 
     # --- آستانه‌های باکت (Bucket Thresholds) ---
