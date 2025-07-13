@@ -26,10 +26,19 @@ class CameraHandler:
 
     def capture_frames(self):
         prev_gray = None
+
+        # خواندن FPS ویدیو (اگر نداشت ۳۰ فرض کن)
+        fps = self.cap.get(cv2.CAP_PROP_FPS)
+        if fps <= 1 or fps > 120:  # اگر ویدیوی تو weird بود
+            fps = 30
+        frame_duration = 1.0 / fps
+
         while self.running:
+            start_time = time.time()
+
             ret, frame = self.cap.read()
             if ret:
-                # محاسبه motion_change (ساده‌ترین روش)
+                # محاسبه motion و ... (کدهای خودت)
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 motion_change = 0
                 if prev_gray is not None:
@@ -37,15 +46,19 @@ class CameraHandler:
                     motion_change = diff.mean()
                 prev_gray = gray
 
-                # فریم را در حافظه اشتراکی قرار بده
                 with self.lock:
                     self.latest_frame = frame.copy()
                     self.latest_motion = motion_change
 
-                # ذخیره عکس فقط همینجا!
                 self.save_capture_if_needed(frame, motion_change)
             else:
                 time.sleep(0.02)
+
+            # توقف برای هماهنگ شدن با سرعت ویدیوی واقعی
+            elapsed = time.time() - start_time
+            sleep_time = frame_duration - elapsed
+            if sleep_time > 0:
+                time.sleep(sleep_time)
 
     def process_frames(self):
         while self.running:

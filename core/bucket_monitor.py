@@ -28,7 +28,7 @@ class BucketMonitor:
                 self.discharge_start_time = time.time()
                 self.discharge_start_frame = self.current_frame_num
                 self.max_teeth_count = 0
-                self._event_msg = "ورود به فاز تخلیه"
+                self._event_msg = "فاز بارگیری و تخلیه"
         else:
             teeth_count = sum([area > self.config["tooth_area_threshold"] for area in teeth_areas])
             if teeth_count > self.max_teeth_count:
@@ -44,13 +44,13 @@ class BucketMonitor:
                 if (time_ok or frame_ok):
                     if self.max_teeth_count < self.config["tooth_min_count"]:
                         self.last_status = "هشدار: تعداد دندان‌ها کم است!"
-                        self._event_msg = "تخلیه کامل" + " تعداد دندانه ها:" + str(self.max_teeth_count)
+                        self._event_msg = "تخلیه کامل"
                     else:
                         self.last_status = "سلامت سیستم"
-                        self._event_msg = "تخلیه کامل" + " تعداد دندانه ها:" + str(self.max_teeth_count)
+                        self._event_msg = "تخلیه کامل"
                 else:
                     # وضعیت سیستم تغییر نمی‌کند، فقط یک پیام کوتاه می‌دهیم
-                    self._event_msg = "تخلیه ناقص" + " تعداد دندانه ها:" + str(self.max_teeth_count)
+                    self._event_msg = "تخلیه ناقص"
 
                 self.reset_discharge()
 
