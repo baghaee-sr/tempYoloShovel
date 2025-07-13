@@ -1,7 +1,7 @@
 config = {
     # --- تنظیمات ورودی و مدل ---
-    "input_source": "files/output_2025-01-31_11-48-58.mp4",       # مسیر فایل ویدیو یا 0 برای وب‌کم
-    "model_path": "assets/weights/img1024_notSorting.pt",        # مسیر فایل مدل YOLO
+    "input_source": "/home/shovel/Downloads/Documents/tempYoloShovel/files/output_2025-01-31_11-48-58.mp4",       # مسیر فایل ویدیو یا 0 برای وب‌کم
+    "model_path": "/home/shovel/Downloads/Documents/tempYoloShovel/assets/weights/img1024_notSorting.pt",        # مسیر فایل مدل YOLO
 
     # --- آستانه‌های باکت (Bucket Thresholds) ---
     "bucket_area_threshold": 165000,                # آستانه ورود به فاز تخلیه (برحسب پیکسل)

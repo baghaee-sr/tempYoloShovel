@@ -1,6 +1,6 @@
 def run(
-    weights="custom_model.pt",  # آدرس مدل از پیش آموزش داده‌شده
-    source="video.mp4",  # آدرس فایل ویدیو یا جریان (یا عدد برای وب‌کم)
+    weights="best_new_dataset.pt",  # آدرس مدل از پیش آموزش داده‌شده
+    source="output_2025-01-31_11-48-58.mp4",  # آدرس فایل ویدیو یا جریان (یا عدد برای وب‌کم)
     imgsz=(640, 640),  # سایز تصاویر
     conf_thres=0.25,  # حد آستانه اطمینان
     iou_thres=0.45,  # حد آستانه IOU
@@ -57,4 +57,4 @@ def run(
     cv2.destroyAllWindows()
 
 
-run(weights="weights/best.pt",source="input_video.mp4")
+run(weights="weights/best_new_dataset.pt",source="output_2025-01-31_11-48-58.mp4")
